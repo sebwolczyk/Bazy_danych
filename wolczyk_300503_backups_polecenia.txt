@@ -1,0 +1,23 @@
+Git CMD
+1. 
+E:
+cd E:\Program Files\PostgreSQL\12\bin
+pg_dump -U postgres -Fc firma > firma_backup.sql
+
+2.
+dropdb -U postgres firma
+
+3.
+pg_restore -U postgres -C -d postgres "E:\Program Files\PostgreSQL\12\bin\firma_backup.sql"
+
+SQL SERVER
+6.
+BACKUP DATABASE AdventureWorks2017
+TO DISK = 'E:\Studia\Bazy_danych\CW_7\AdventureWorks2017_backup.bak'
+WITH FORMAT;
+
+7.
+CREATE VIEW login_department AS
+SELECT LoginID,Name FROM AdventureWorks2017.HumanResources.Department, AdventureWorks2017.HumanResources.Employee, AdventureWorks2017.HumanResources.EmployeeDepartmentHistory
+WHERE AdventureWorks2017.HumanResources.Department.DepartmentID = AdventureWorks2017.HumanResources.EmployeeDepartmentHistory.DepartmentID
+AND AdventureWorks2017.HumanResources.Employee.BusinessEntityID = AdventureWorks2017.HumanResources.EmployeeDepartmentHistory.BusinessEntityID
